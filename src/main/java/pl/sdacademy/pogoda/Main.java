@@ -7,36 +7,33 @@ import pl.sdacademy.pogoda.model.Weather;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("What city weather you want to know?");
-        Scanner scanner = new Scanner(System.in);
-        String miasto = scanner.next();
-        String url = "http://api.apixu.com/v1/current.json?key=da38b077b09949c4ad272615181808&q=" + miasto;
-        scanner.close();
+        WeatherService weatherService = new WeatherService("http://api.apixu.com/v1/current.json", "da38b077b09949c4ad272615181808");
+        weatherService.getWeatherWithGivenCity();
+        weatherService.getCityWeather("Gdansk");
 
-        //IOUtils obsługuje URL
-
-        try {
-            JSONObject json = new JSONObject(IOUtils.toString(new URL(url), Charset.forName("UTF-8")));
-
-            Weather weather = new Weather();
-            weather.setCity(json.getJSONObject("location").getString("name"));
-            weather.setConditionText(json.getJSONObject("current").getJSONObject("condition").getString("text"));
-            weather.setTemperature(json.getJSONObject("current").getDouble("temp_c"));
-            weather.setFeelsLikeC(json.getJSONObject("current").getDouble("feelslike_c"));
-            weather.setIocnUrl(json.getJSONObject("current").getJSONObject("condition").getString("icon"));
-
-            System.out.println("");
-
-            System.out.println(weather.toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-
 }
+
+
+
+//        System.out.println("What city weather you want to know?");
+//        Scanner scanner = new Scanner(System.in);
+//        String miasto = scanner.next();
+//        String url = "http://api.apixu.com/v1/current.json?key=da38b077b09949c4ad272615181808&q=" + miasto;
+//        scanner.close();
+
+//IOUtils obsługuje URL
+
+//            System.out.println("");
+//            Iterator<String> keys = json.getJSONObject("current").keys();
+//            for (Iterator<String> it = keys; it.hasNext(); ) {
+//                String k = it.next();
+//                System.out.println(k);
+//            }
+
