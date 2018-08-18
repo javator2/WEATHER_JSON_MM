@@ -1,25 +1,22 @@
 package pl.sdacademy.pogoda;
 
-import org.apache.commons.io.IOUtils;
-import org.json.JSONObject;
 import pl.sdacademy.pogoda.model.Weather;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
 
+
         WeatherService weatherService = new WeatherService("http://api.apixu.com/v1/current.json", "da38b077b09949c4ad272615181808");
         weatherService.getWeatherWithGivenCity();
-        weatherService.getCityWeather("Gdansk");
-
     }
 }
-
 
 
 //        System.out.println("What city weather you want to know?");

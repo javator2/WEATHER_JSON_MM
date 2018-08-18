@@ -3,14 +3,30 @@ package pl.sdacademy.pogoda.model;
 public class Weather {
 
     private String city;
-    private String iocnUrl;
+    private String iconUrl;
     private double temperature;
     private double feelsLikeC;
     private String conditionText;
+    private double latitude;
+    private double longitude;
 
     public Weather() {
+    }
 
+    public double getLatitude() {
+        return latitude;
+    }
 
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getCity() {
@@ -21,12 +37,12 @@ public class Weather {
         this.city = city;
     }
 
-    public String getIocnUrl() {
-        return iocnUrl;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public void setIocnUrl(String iocnUrl) {
-        this.iocnUrl = iocnUrl;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public double getTemperature() {
@@ -57,7 +73,11 @@ public class Weather {
     public String toString() {
         return "In "
                 + city
-                + " temperature is "
+                + "(longitude: "
+                + longitude
+                + ", latitude: "
+                + latitude
+                + ") \ntemperature is "
                 + temperature
                 + " degrees, it is "
                 + conditionText.toLowerCase()
