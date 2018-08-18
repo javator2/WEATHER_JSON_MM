@@ -23,7 +23,7 @@ public class WeatherService {
     public void getWeatherWithGivenCity() {
         System.out.println("What city weather you want to know?");
         Scanner scanner = new Scanner(System.in);
-        String miasto = scanner.next();
+        String miasto = scanner.nextLine();
         getCityWeather(miasto);
         scanner.close();
     }
